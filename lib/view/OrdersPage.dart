@@ -305,53 +305,117 @@ class _OrderCardState extends State<OrderCard> {
 
           ),
           Divider(),
-          ElevatedButton(
-              onPressed: ()async {
-                if (widget.payment == 'Cash') {
-                  await widget.cRef3.doc(widget.userId).update({
-                    'points': updatePoinstCash(userPoints: widget.UserPoints,rewardpoints: widget.rewardPoints)
-                  });
-                  Get.snackbar('udated','points');
-                }
-                if (widget.payment == 'Points') {
-                  widget.cRef3.doc(widget.userId).update({
-                    'points': updtePoinstPoints(rewardpoints: widget.rewardPoints,userPoints: widget.UserPoints,Totalptsprice: widget.PtsTotalPrice)
-                  });
-                  Get.snackbar('udated','points');
-                }
-              },
-              child: const Text('Add Reward')),
-          ElevatedButton(
-              onPressed: ()async {
-                // widget.deleteRef.doc(widget.OrderId).update({
-                //   'OrderStatue': Colors.yellow
-                // });
-                widget.deleteRef.doc(widget.OrderId).update({
-                  'color': 'Yellow'
-                });
-              },
-              child: const Text('Yellow')),
-          ElevatedButton(
-              onPressed: ()async {
-                widget.deleteRef.doc(widget.OrderId).update({
-                  'color': 'Green'
-                });
-              },
-              child: const Text('Green')),
-          ElevatedButton(
-              onPressed: ()async {
-                widget.deleteRef.doc(widget.OrderId).update({
-                  'color': 'Red'
-                });
-              },
-              child: const Text('Red')),
-          ElevatedButton(
-              onPressed: ()async {
-                widget.deleteRef.doc(widget.OrderId).update({
-                  'color': 'White',
-                });
-              },
-              child: const Text('White')),
+          Center(
+            child: ElevatedButton(
+
+                onPressed: ()async {
+                  if (widget.payment == 'Cash') {
+                    await widget.cRef3.doc(widget.userId).update({
+                      'points': updatePoinstCash(userPoints: widget.UserPoints,rewardpoints: widget.rewardPoints)
+                    });
+                    Get.snackbar('udated','points');
+                  }
+                  if (widget.payment == 'Points') {
+                    widget.cRef3.doc(widget.userId).update({
+                      'points': updtePoinstPoints(rewardpoints: widget.rewardPoints,userPoints: widget.UserPoints,Totalptsprice: widget.PtsTotalPrice)
+                    });
+                    Get.snackbar('udated','points');
+                  }
+                },
+                child: const Text('Add Reward')),
+          ),
+          SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              Container(
+                height: 100,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.black), // Add a border
+                  color: Colors.yellow, // Set background color
+                ),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    widget.deleteRef.doc(widget.OrderId).update({
+                      'color': 'Yellow',
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent, // Set button's background color as transparent
+                    elevation: 0, // Remove button's elevation
+                  ),
+                  child: const Text('Yellow',style: TextStyle(color: Colors.black)),
+                ),
+              ),
+              SizedBox(width: 10),
+              Container(
+                height: 100 ,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.black),
+                  color: Colors.green,
+                ),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    widget.deleteRef.doc(widget.OrderId).update({
+                      'color': 'Green',
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent,
+                    elevation: 0,
+                  ),
+                  child: const Text('Green',style: TextStyle(color: Colors.black)),
+                ),
+              ),
+              SizedBox(width: 10),
+              Container(
+                height: 100 ,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.black),
+                  color: Colors.red,
+                ),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    widget.deleteRef.doc(widget.OrderId).update({
+                      'color': 'Red',
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent,
+                    elevation: 0,
+                  ),
+                  child: const Text('Red',style: TextStyle(color: Colors.black)),
+                ),
+              ),
+              SizedBox(width: 10),
+              Container(
+                height: 100 ,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.black),
+                  color: Colors.white,
+                ),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    widget.deleteRef.doc(widget.OrderId).update({
+                      'color': 'White',
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent,
+                    elevation: 0,
+                  ),
+                  child: const Text('White',style: TextStyle(color: Colors.black),),
+                ),
+              ),
+
+            ],
+          ),
+          SizedBox(height:15 ,),
 
         ],
       ),
